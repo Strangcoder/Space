@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="planet_syle.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+ </head>
+ <body>
+  <canvas id="starCanvas"></canvas>
+  <div class="parent">
+    <div class="page_sun">
+      <div class="title"><p class="txt_title">МЕРКУРИЙ/ВЕРНУТЬСЯ</p></div>
+      <div class="content">
+        <div class="mercury" id="mercury"></div>
+        <div class="main_box">
+          <div class="arrow" id="triggerImage"><img src="../../image/arrow.png" style="width: 100%; height: 100%;"></div>
+          <div class="block_info" id="transform_platform">
+            <p class="txt_planet">Меркурий — ближайшая к Солнцу планета Солнечной системы и одновременно самая маленькая из всех. Его диаметр составляет около 4 880 километров, а расстояние до Солнца — примерно 58 миллионов километров. Из-за близости к Солнцу и отсутствия плотной атмосферы, температура на его поверхности колеблется от −180 °C ночью до +430 °C днем. Меркурий состоит в основном из металлов и силикатов, обладает большим железным ядром, что делает его плотной планетой. У него нет спутников, магнитосфера слабая, но присутствует. Меркурий вращается очень медленно — один день длится почти 59 земных суток, в то время как год длится 88 земных суток. Поверхность планеты покрыта кратерами, напоминающими Луну, и имеет следы древней вулканической активности. Из-за малого наклона оси у него почти нет смены времен года.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script_planet3d.js"></script>
+  <script src="script_page2.js"></script>
+  <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+ </body>
+</html>

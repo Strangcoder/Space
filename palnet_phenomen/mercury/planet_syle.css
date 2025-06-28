@@ -1,0 +1,197 @@
+@font-face {
+    font-family: 'Jura'; /* Имя, которое вы будете использовать для шрифта */
+    src: url('../../font/Jura.ttf') format('truetype'); /* Укажите путь к файлу шрифта */
+    font-weight: lighter; /* Установите вес для шрифта */
+    font-style: normal; /* Установите стиль для шрифта */
+}
+
+@keyframes trans_platfrom{
+	from{
+		display: none;
+		height: 10px;
+	}
+	to{
+		height: 205px;
+	}
+}
+
+@keyframes trans_platfrom_back{
+	from{
+		display: flex;
+		height: 205px;
+
+	}
+	to{
+		display: none;
+		height: 10px;
+
+	}
+}
+#starCanvas {
+  position: fixed;  /* фиксируем канвас на экране */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;  /* Канвас на заднем плане */
+}
+body {
+    overflow: hidden; /* убираем полосу скролла */
+}
+
+
+.parent{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.page_sun{
+	width: 1920px;
+	height: 925px;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 5% 95%;
+}
+
+.content{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+}
+.title{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.mercury{
+	width: 550px;
+	height: 550px;
+	border: 0px solid;
+	margin: 45px;
+}
+
+.arrow{
+	width: 100px;
+	height: 40px;
+	border: 0px solid;
+/*	background-color: rgb(15, 27, 74 , 0.96);*/
+}
+
+.empety{
+	width: 100%;
+	height: 100px;
+	border: 0px solid;
+}
+.main_box{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: center;
+}
+.block_info{
+	width: 800px;
+	height: 10px;
+	border: 0px solid;
+	position: relative;
+	z-index: 1;
+	background-color: rgb(15, 27, 74 , 0.96);
+/*	border-radius:20px*/
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+}
+.animate{
+	animation: trans_platfrom 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.animate_back{
+	animation: trans_platfrom_back 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.txt_planet{
+	display: none;
+}
+
+.txt_title{ 
+	font-family: 'Jura', serif;
+	font-size: 30px;
+	color: white;
+}
+
+.txt_planet{ 
+	font-family: 'Jura', serif;
+	color: white;
+}
+
+@media (max-width: 1440px){
+	.mercury{
+		width: 550px;
+		height: 550px;
+	}
+	.page_sun{
+	width: 100%;
+	height: 900px;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 5% 95%;
+	}
+}
+@media (max-width: 1024px){
+	.mercuryn{
+		width: 550px;
+		height: 550px;
+	}
+	.page_sun{
+	width: 100%;
+	height: 1366px;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 5% 95%;
+	}
+	.block_info{
+		width: 100%;
+	}
+}
+@media (max-width: 730px){
+	.mercury{
+		width: 225px;
+		height: 225px;
+	}
+	.page_sun{
+	width: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 5% 95%;
+	}
+	.txt_planet{
+		font-size: 11px;
+	}
+	.block_info{
+		width: 100%;
+	}
+
+}
