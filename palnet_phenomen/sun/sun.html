@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="planet_syle.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+ </head>
+ <body>
+  <canvas id="starCanvas"></canvas>
+  <div class="parent">
+    <div class="page_sun">
+      <div class="title"><p class="txt_title">СОЛНЦЕ/ВЕРНУТЬСЯ</p></div>
+      <div class="content">
+        <div class="sun" id="sun"></div>
+        <div class="main_box">
+          <div class="arrow" id="triggerImage"><img src="../../image/arrow.png" style="width: 100%; height: 100%;"></div>
+          <div class="block_info" id="transform_platform">
+            <p class="txt_planet">Солнце — это звезда, находящаяся в центре нашей Солнечной системы и являющаяся основным источником света и тепла для Земли. Оно состоит в основном из водорода (около 74%) и гелия (примерно 24%), с небольшими количествами более тяжелых элементов. В процессе термоядерного синтеза в его ядре водород превращается в гелий, выделяя огромное количество энергии, что поддерживает термальную и световую активность.
+            Солнце имеет диаметр около 1.4 миллиона километров и находится на расстоянии примерно 150 миллионов километров от Земли. Оно вращается вокруг своей оси, а также вместе с остальными звездами в галактике Млечный Путь. Ожидается, что через примерно 5 миллиардов лет Солнце исчерпает свои запасы водорода, превратится в красного гиганта и в конечном итоге станет белым карликом. Влияние Солнца на климат и экосистемы Земли невозможно переоценить — оно поддерживает жизнь и определяет многие процессы на планете.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script_planet3d.js"></script>
+  <script src="script_page2.js"></script>
+  <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+ </body>
+</html>
