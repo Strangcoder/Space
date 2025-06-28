@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+ </head>
+ <body>
+    <canvas id="starCanvas"></canvas>
+    <div class="parent">
+      <div class="page1">
+        <div class="title">
+          <div class="profille">
+            <div class="emps"></div>
+            <div class="photo"><p class="quest txt">?</p></div>
+            <div class="post"><p class="p_txt txt">
+              Имя <br/>
+              Пилот 
+            </p></div>
+          </div>
+          <div class="name"><a href="../main_site/site.html"><p class="title_txt txt">Космос</p></a></div>
+          <div class="starship_box">
+            <div class="startshipB" id="triggerImage"></div></div>
+        </div>
+        <div class="paltform" id="transform_platform">
+          <div class="slider" id="slider">
+            <div class="box_status enb">
+              <div class="box_arrow"><p class="arrow_left txt" id="prev"><</p></div>
+              <p class="fuel txt">Топливо: 100%</p>
+              <p class="lvl_o2 txt">Уровень кислорода: 100%</p>
+              <p class="speed txt">Скорость: 750км/с</p>
+              <p class="coordinate txt">Координаты:</p>
+              <div class="box_arrow"><p class="arrow_rigth txt" id="next">></p></div>
+            </div>
+            <div class="box_status menu">
+              <div class="box_arrow"><p class="arrow_left txt" id="prev"><</p></div>
+              <a href="phenomena/site.html"><p class="fuel txt">Интересные явления космоса</p></a>
+              <a href="../Myths/site.html"><p class="lvl_o2 txt">Мифы о космосе</p></a>
+              <a href="../News/site.html"><p class="speed txt">Новости</p></a>
+              <div class="box_arrow"><p class="arrow_rigth txt" id="next">></p></div>
+            </div>
+          </div>
+        </div>
+        <div class="bodYs">
+          <div class="content_page1">
+            <div class="empety"></div>
+            <div class="title_box"><p class="title_pahenom">Интресные явления космоса</p></div>
+            <div class="empety"><div class="box_arrows"><a href="#start"><img src="../image/arrow_backs.png" class="chertova_arrow"></a></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="page2" id="start">
+        <div class="page_sun">
+          <div class="title_sun"><p class="txt_title">ПУЛЬСАР</p></div>
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="A highly magnetized rotating neutron star" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/f3d06d6bb3794377afa7735460f23414/embed?ui_infos=0" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+            </div>
+            <div class="arrow" id="arrowtrg"><img src="../image/arrow.png" style="width: 100%; height: 100%;"></div>
+            <div class="block_info" id="info_palnet">
+              <p class="txt_planet">Пульсар — это разновидность нейтронной звезды, образующейся после взрыва массивной звезды в виде сверхновой. Он обладает чрезвычайно высокой плотностью и сильным магнитным полем. Пульсары излучают радиоволны и другое электромагнитное излучение вдоль магнитных полюсов. Если ось вращения пульсара наклонена относительно магнитной оси, излучение периодически попадает в поле зрения Земли, создавая эффект "пульса", благодаря чему объект и получил своё название.  
+              Типичный пульсар имеет диаметр около 20 километров, но его масса может быть больше солнечной. Он вращается с огромной скоростью — от нескольких оборотов в секунду до сотен оборотов в секунду. Пульсары служат космическими "маяками" и точными астрономическими часами. Их изучение помогает ученым понимать поведение материи в экстремальных условиях, а также проверять общую теорию относительности. Некоторые пульсары входят в состав двойных систем, и их взаимодействие с компаньоном может приводить к уникальным астрофизическим явлениям.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="title_sun"><p class="txt_title">КВАЗАР</p></div>
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="An active Seyfert Galaxy" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/9e62063330924364a941a6ca11db7996/embed?ui_infos=0" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+            </div>
+            <div class="arrow" id="arrowtrg"><img src="../image/arrow.png" style="width: 100%; height: 100%;"></div>
+            <div class="block_info" id="info_palnet">
+              <p class="txt_planet">Квазар — это чрезвычайно яркий и удалённый объект во Вселенной, относящийся к активным галактическим ядрам. Он получает энергию от аккреционного диска, сформированного вокруг сверхмассивной чёрной дыры в центре галактики. Когда материя падает в этот диск, она нагревается до миллионов градусов и испускает мощное электромагнитное излучение — от радиоволн до рентгеновских лучей. Это делает квазары видимыми на огромных расстояниях.  
+              Несмотря на компактные размеры, квазары могут излучать в тысячи раз больше энергии, чем вся остальная их галактика. Они были особенно активны в ранней Вселенной, и сегодня квазары служат важными ориентирами для изучения её истории и структуры. Из-за своей яркости они позволяют астрономам наблюдать процессы, происходившие миллиарды лет назад. Некоторые квазары испускают релятивистские струи плазмы, простирающиеся на миллионы световых лет. Эти объекты остаются одними из самых загадочных и впечатляющих явлений в космосе.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="title_sun"><p class="txt_title">ЧЕРНАЯ ДЫРА</p></div>
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Black Hole" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e410da98b1e5445eae2acafaaa53587d/embed?ui_infos=0" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+            </div>
+            <div class="arrow" id="arrowtrg"><img src="../image/arrow.png" style="width: 100%; height: 100%;"></div>
+            <div class="block_info" id="info_palnet">
+              <p class="txt_planet">Чёрная дыра — это область пространства-времени с настолько сильным гравитационным полем, что ничто, даже свет, не может покинуть её пределы. Она образуется, как правило, после коллапса массивной звезды, когда давление не может больше сдерживать силу притяжения, и материя сжимается до бесконечной плотности — сингулярности. Вокруг чёрной дыры находится граница, называемая горизонтом событий: пересечённая однажды, она не позволяет ничему вернуться обратно.  
+              Существуют чёрные дыры разных масс: от звёздных до сверхмассивных, обитающих в центрах галактик. Они не видимы напрямую, но их присутствие можно обнаружить по воздействию на окружающее вещество и излучению от аккреционного диска. Чёрные дыры играют ключевую роль в эволюции галактик, управляя их динамикой и ростом. Исследования гравитационных волн, испускаемых при слиянии чёрных дыр, открыли новую эру наблюдательной астрономии. Несмотря на свою "невидимость", они являются одними из самых изучаемых объектов в современной астрофизике.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="title_sun"><p class="txt_title">ЭКЗОПЛАНЕТА</p></div>
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Kepler 22b" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/3589154676b7465c815a4aa1d8c4354a/embed" style="width: 100%; height:100%; border-radius: 20px;"></iframe> </div>
+            </div>
+              <div class="overlay"></div>
+            <div class="arrow" id="arrowtrg"><img src="../image/arrow.png" style="width: 100%; height: 100%;"></div>
+            <div class="block_info" id="info_palnet">
+              <p class="txt_planet">Экзопланета — это планета, которая находится за пределами нашей Солнечной системы и вращается вокруг другой звезды. Первая экзопланета была открыта в 1990-х годах, и с тех пор учёные нашли уже тысячи таких миров. Они бывают разными: горячими газовыми гигантами, похожими на Юпитер, каменистыми, как Земля, или даже океаническими планетами, полностью покрытыми водой.
+
+              Многие экзопланеты открываются методом транзита — когда планета проходит перед своей звездой и немного уменьшает её яркость. Другой способ — измерение колебаний звезды из-за гравитационного притяжения планеты. Некоторые экзопланеты находятся в так называемой "зоне обитаемости" — области, где может существовать жидкая вода. Именно такие планеты особенно интересуют учёных, ведь они могут быть пригодны для жизни.
+
+              Изучение экзопланет помогает понять, как формируются и развиваются планетные системы, и позволяет заглянуть в возможное будущее человечества — ведь, возможно, когда-нибудь люди смогут жить на одной из таких далёких планет.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="title_sun"><p class="txt_title">ТУМАННОСТЬ</p></div>
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Stars and nebulae" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/114bb4cc9dda41ffbbb9724e3598927c/embed?ui_infos=0" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+            </div>
+            <div class="arrow" id="arrowtrg"><img src="../image/arrow.png" style="width: 100%; height: 100%;"></div>
+            <div class="block_info" id="info_palnet">
+              <p class="txt_planet">Туманность — это огромное облако из газа и пыли в космосе. Она может быть местом, где рождаются новые звёзды, или остатками взорвавшихся старых звёзд. Некоторые туманности ярко светятся, потому что поглощают и переизлучают свет ближайших звёзд, а другие можно увидеть только в силуэте — как тёмные пятна на фоне светлого неба.
+
+              Существуют разные виды туманностей: эмиссионные, отражательные, планетарные и тёмные. Например, в эмиссионной туманности газ светится сам по себе, а в отражательной — только отражает свет звёзд. Планетарные туманности образуются, когда умирающие звёзды сбрасывают свои внешние оболочки, создавая красивые светящиеся оболочки.
+
+              Туманности — не только красивое зрелище, но и важная часть жизни Вселенной. Именно в их глубинах из газа и пыли со временем формируются новые звёзды и планеты. Изучая их, учёные лучше понимают, как устроена наша Галактика и как появляются солнечные системы вроде нашей.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <script src="script_planet3d.js"></script>
+    <script src="script_page2.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+      let scrolling = false;
+      function smoothScroll(deltaY) {
+          if (!scrolling) {
+              scrolling = true;
+              let sectionHeight = window.innerHeight; // Высота видимой части окна (высота одного блока)
+              let scrollDistance = deltaY > 0 ? sectionHeight : -sectionHeight; // Прокручиваем на высоту одного блока
+              let duration = 500; // Длительность анимации
+
+              // Функция для анимации прокрутки
+              function animateScroll() {
+                  let start = Date.now();
+                  let scrollStart = window.scrollY; // Текущая позиция прокрутки
+                  let end = scrollStart + scrollDistance; // Конечная позиция прокрутки
+
+                  function scroll() {
+                      let elapsed = Date.now() - start;
+                      let progress = elapsed / duration;
+
+                      if (progress < 1) {
+                          let currentScroll = scrollStart + (scrollDistance * progress);
+                          window.scrollTo(0, currentScroll); // Прокручиваем
+                          requestAnimationFrame(scroll); // Продолжаем анимацию
+                      } else {
+                          window.scrollTo(0, end); // Завершаем прокрутку
+                          scrolling = false;
+                      }
+                  }
+
+                  requestAnimationFrame(scroll); // Запуск анимации
+              }
+
+              requestAnimationFrame(animateScroll); // Запуск анимации
+          }
+      }
+
+      // Отслеживаем событие прокрутки мышью
+      window.addEventListener('wheel', function(event) {
+          event.preventDefault(); // Предотвращаем стандартную прокрутку
+          smoothScroll(event.deltaY); // Прокручиваем страницу
+      });
+    </script>
+    <script>
+      const screens = document.querySelectorAll('.box_status');
+      let currentIndex = 0;
+
+      function showScreen(index) {
+        screens.forEach((screen, i) => {
+          screen.classList.toggle('active', i === index);
+        });
+      }
+
+      // Назначаем обработчики всем стрелкам
+      document.querySelectorAll('.arrow_left').forEach(el => {
+        el.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+          showScreen(currentIndex);
+        });
+      });
+
+      document.querySelectorAll('.arrow_rigth').forEach(el => {
+        el.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % screens.length;
+          showScreen(currentIndex);
+        });
+      });
+
+      // Показываем первый экран
+      showScreen(currentIndex);
+    </script>
+    <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+  </body>
+</html> 

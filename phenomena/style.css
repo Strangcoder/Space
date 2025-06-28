@@ -1,0 +1,751 @@
+@font-face {
+    font-family: 'Jura'; /* Имя, которое вы будете использовать для шрифта */
+    src: url('../font/Jura.ttf') format('truetype'); /* Укажите путь к файлу шрифта */
+    font-weight: lighter; /* Установите вес для шрифта */
+    font-style: normal; /* Установите стиль для шрифта */
+}
+html {
+  scroll-behavior: smooth;
+}
+@keyframes trans_platfrom{
+	from{
+		top:-73px;
+	}
+	to{
+		top:-30px;
+	}
+}
+
+@keyframes trans_platfrom_back{
+	from{
+		top:-43px;
+	}
+	to{
+		top:-73px;
+	}
+}
+@keyframes opacity_sleep{
+	from{
+		opacity: 0;
+	}
+	50%{
+		opacity: 1;
+	}
+	to{
+		opacity: 0;
+	}
+}
+
+
+#starCanvas {
+  position: fixed;  /* фиксируем канвас на экране */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;  /* Канвас на заднем плане */
+}
+
+.txt{ 
+	font-family: 'Jura', serif;
+}
+.parent{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3px;
+}
+.page1{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.overlay{
+	position: absolute;
+	top: 0;
+	left: 155px;
+	width: 129px;
+	height: 50px;
+	background-color: black;
+	opacity: 1;
+	border-radius:20px;
+	z-index: 10;
+	top: 44px;
+}
+.paltform{
+	width: 100%;
+	height: 70px;
+	border: 0px solid;
+	border-radius: 20px;
+	position: relative;
+	z-index: 1;
+	top:-73px;
+	background-color: rgb(0, 0, 0, 0.50);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 24px;
+}
+
+.animate{
+	animation: trans_platfrom 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.animate_back{
+	animation: trans_platfrom_back 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.title{
+	width: 100%;
+	height: 100px;
+	border: 0px solid;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	border-radius: 20px;
+	position: relative;
+	z-index: 3;
+	background-color: #101733;
+}
+
+.profille{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;	
+}
+
+.name{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.starship_box{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: end;
+}
+
+.photo{
+	width: 60px;
+	height: 60px;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.post{
+	width: 60px;
+	height: 60px;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.quest{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.p_txt{
+	color: white;
+}
+
+.title_txt{
+	font-size: 30px;
+	color: white;
+}
+
+.startshipB{
+	width: 30px;
+	height: 30px;
+	border: 0px solid;
+	background: url(../image/starttrek.png);
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	background-position: center;
+	position: relative;
+	top: -3px;
+	right: 4px;
+}
+
+.fuel{
+	font-size: 10px;
+	color: #127628;
+}
+
+.lvl_o2{
+	font-size: 10px;
+	color: #127628;
+}
+
+.speed{
+	font-size: 10px;
+	color: #127628;
+}
+
+.coordinate{
+	font-size: 10px;
+	color: #127628;
+}
+
+.slider{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+  align-items: flex-end;
+}
+.box_status{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+  align-items: flex-end;
+}
+.enb{
+	display: none;
+}
+.menu{
+	display: none;
+}
+.box_status.active{
+	display: flex;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+a:focus {
+  outline: none;
+}
+.box_arrow{
+	width: 20px;
+	height: auto;
+	border: 0px solid;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+}
+.arrow_left{
+	font-size: 26px;
+  color: #127628;
+  font-weight: bold;
+  margin-bottom: auto;
+}
+.arrow_rigth{
+	font-size: 26px;
+  color: #127628;
+  font-weight: bold;
+  margin-bottom: auto;
+}
+
+.bodYs{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+.title_pahenom{
+	font-family: 'Jura', serif;
+	font-size: 50px;
+	color: white;
+	animation: opacity_sleep 10s;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+/*	animation-fill-mode: forwards;*/
+/*	animation-timing-function: ease-out;*/
+}
+
+.content_page1{
+	width: 80%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	justify-items: center;
+	align-items: center;
+}
+
+.empety{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.box_arrows{
+	width: 80px;
+	height: 50px;
+	border: 0px solid;
+}
+.mission{
+	width: 360px;
+	height: 375px;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+}
+
+.chertova_arrow{
+	width: 100%;
+	height: 100%;
+	animation: opacity_sleep 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+/*	animation-fill-mode: forwards;*/
+	animation-timing-function: ease-out;
+}
+.title_box{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+.mission_txt{
+	font-size: 13px;
+	color: #127628;
+	font-weight: bold;
+	text-align: left;
+
+}
+
+.mission_titile_txt{
+	font-size: 22px;
+	color: #127628;
+	font-weight: bold;
+}
+
+.page2{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+
+.content_page2{
+	width: 85%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 10% 90%;
+	justify-items: center;
+	align-items: center;
+}
+
+.title_txt_page{
+	font-size: 20px;
+	color: white;
+}
+
+.solar_system-container{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	gap: 5px;
+}
+.main_style_page{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.page3{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.page4{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.main_content_page{
+	width: 85%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 10% 90%;
+	justify-items: center;
+	align-items: center;
+}
+
+.info_belt_asteroides{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 5px;
+	justify-items: center;
+	align-items: center;
+}
+
+.belt_asteroides{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.block_img{
+	width: 100%;
+	height: 250px;
+	border: 0px solid;
+	background-color: black;
+	border-radius: 20px;
+}
+
+.txt_block{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.planet{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+}
+.txt_box_main{
+	width: 97%;
+	height: auto;
+	border: 0px solid;
+/*	align-self: flex-start;*/
+}
+.txt_box{
+	padding-bottom: 5px;
+/*	align-self: flex-start;*/
+}
+.txt_box1{
+	padding-bottom: 7px;
+/*	align-self: flex-start;*/
+}
+.txt_inblock {
+	color: white;
+}
+.transition{
+	width: 40px;
+	height: 40px;
+	border: 0px solid;
+	margin-left: auto;
+}
+.page5{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+
+
+
+
+
+@media (max-width: 1920px){
+	.solar_system-container{
+		gap: 40px;
+	}
+}
+@media (max-width: 1920px){
+	.block_img{
+		width: 472px;
+		height: 267px;
+	}
+}
+
+
+/*page2*/
+.page_sun{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 5% 95%;
+}
+
+.page2{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.content{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+
+}
+.title_sun{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.jupiter{
+	width: 80%;
+	height: 550px;
+	border: 0px solid;
+	margin: 45px;
+	position: relative;
+	z-index: 1;
+}
+
+.arrow{
+	width: 100px;
+	height: 40px;
+	border: 0px solid;
+	margin-top: auto;	
+/*	background-color: rgb(15, 27, 74 , 0.96);*/
+}
+
+.empety{
+	width: 100%;
+	height: 100px;
+	border: 0px solid;
+}
+
+@keyframes trans_platfrom_planet{
+	from{
+		opacity: 0;
+		height: 10px;
+	}
+	to{
+		opacity: 1;
+		height: 225px;
+
+	}
+}
+
+@keyframes trans_platfrom_back_planet{
+	from{
+		opacity: 1;
+		height: 225px;
+
+
+	}
+	to{
+		opacity: 0;
+		height: 10px;
+
+	}
+}
+
+.block_info{
+	width: 100%;
+	height: 10px;
+	border: 0px solid;
+	background-color: rgb(13, 24, 66 , 0.96);
+/*	border-radius:20px*/
+	display: flex;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+}
+.animate_planet{
+	animation: trans_platfrom_planet 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.animate_back_planet{
+	animation: trans_platfrom_back_planet 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.txt_planet{
+	display: none;
+	font-family: 'Jura', serif;
+	color: white;
+
+}
+
+.txt_title{ 
+	font-family: 'Jura', serif;
+	font-size: 30px;
+	color: white;
+}
+.emps{
+	width: 60px;
+	height: 60px;
+	border: 0px solid;
+}
+
+@media (max-width: 1024px){
+	.title_pahenom{
+		font-size: 46px;
+	}
+	.box_arrows {
+  width: 55px;
+  height: 35px;
+	}
+	.overlay{
+		left: 87px;
+	}
+		.txt_planet {
+	  display: none;
+	  font-family: 'Jura', serif;
+	  color: white;
+	  font-size: 15px;
+	}
+}
+
+@media (max-width: 730px){
+	.emps{
+		display: none;
+	}
+	.title_pahenom{
+		font-size: 19px;
+	}
+	.box_arrows{
+	width: 40px;
+	height: 25px;
+	}
+	.txt_planet{
+		font-size: 10px;
+	}
+	.jupiter{
+		width: 95%;
+		height: 250px;
+		margin-top: auto;
+	}
+	.txt_title{
+		font-size: 25px;
+	}
+	.overlay {
+  position: absolute;
+  top: 0;
+  left: 9px;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  opacity: 1;
+  border-radius:20px;
+  z-index: 10;
+  top: 270px;
+	}
+		.fuel{
+		font-size: 8px;
+	}
+		.lvl_o2{
+		font-size: 8px;
+	}
+		.speed{
+		font-size: 8px;
+	}
+		.coordinate{
+		font-size: 8px;
+	}
+	.box_arrow{
+		width: 10px;
+		height: auto;
+	}
+}
