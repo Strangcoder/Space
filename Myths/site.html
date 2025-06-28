@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+ </head>
+ <body>
+    <canvas id="starCanvas"></canvas>
+    <div class="parent">
+      <div class="page1">
+        <div class="title">
+          <div class="profille">
+            <div class="emps"></div>
+            <div class="photo"><p class="quest txt">?</p></div>
+            <div class="post"><p class="p_txt txt">
+              Имя <br/>
+              Пилот 
+            </p></div>
+          </div>
+          <div class="name"><a href="../main_site/site.html"><p class="title_txt txt">Космос</p></a></div>
+          <div class="starship_box">
+            <div class="startshipB" id="triggerImage"></div></div>
+        </div>
+        <div class="paltform" id="transform_platform">
+          <div class="slider" id="slider">
+            <div class="box_status enb">
+              <div class="box_arrow"><p class="arrow_left txt" id="prev"><</p></div>
+              <p class="fuel txt">Топливо: 100%</p>
+              <p class="lvl_o2 txt">Уровень кислорода: 100%</p>
+              <p class="speed txt">Скорость: 750км/с</p>
+              <p class="coordinate txt">Координаты:</p>
+              <div class="box_arrow"><p class="arrow_rigth txt" id="next">></p></div>
+            </div>
+            <div class="box_status menu">
+              <div class="box_arrow"><p class="arrow_left txt" id="prev"><</p></div>
+              <a href="../phenomena/site.html"><p class="fuel txt">Интересные явления космоса</p></a>
+              <a href="../Myths/site.html"><p class="lvl_o2 txt">Мифы о космосе</p></a>
+              <a href="../News/site.html"><p class="speed txt">Новости</p></a>
+              <div class="box_arrow"><p class="arrow_rigth txt" id="next">></p></div>
+            </div>
+          </div>
+        </div>
+        <div class="bodYs">
+          <div class="content_page1">
+            <div class="empety"></div>
+            <div class="title_box"><p class="title_pahenom">Мифы о космосе</p></div>
+            <div class="empety"><div class="box_arrows"><a href="#start"><img src="../image/arrow_backs.png" class="chertova_arrow"></a></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="page2" id="start">
+        <div class="page_sun">
+          <div class="content">
+            <div class="jupiter a">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Satellites and space debris around the Earth" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/f6b3b5fd88e442cc9d5013a8f3ff6295/embed" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+              <div class="overlay"></div>
+            </div>
+            <div class="info_myths b">
+              <div class="mmain_title"><p class="cosmo">Космический мусор: катастрофа или преувеличение?</p></div>
+              <div class="mmain_txt">
+                <p class="desc">Космический мусор — это реальная проблема, но не катастрофа. В космосе действительно много обломков, включая старые спутники и детали, но орбита — это огромное пространство, где объекты редко сталкиваются. Крупные фрагменты мусора отслеживаются, и такие станции, как МКС, могут маневрировать, снижая риск столкновений до 1 на 10 000. Спутники Starlink от SpaceX сгорают в атмосфере через 3-5 лет. Однако есть и опасения: мелкие обломки не отслеживаются, но могут повредить спутники. С увеличением числа запусков и без контроля над мусором существует риск эффекта Кесслера, когда столкновения могут привести к цепной реакции. Старые объекты на высоких орбитах остаются на долгие годы, что усугубляет проблему.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Quantum leap" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/0582b6d9e5ae465396673d9a2a48c551/embed" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+              <div class="overlay"></div>
+            </div>
+            <div class="info_myths">
+              <div class="mmain_title"><p class="cosmo">Мы не полетим на Марс из‑за радиации</p></div>
+              <div class="mmain_txt"><p class="desc">Исследования Mars Odyssey и Curiosity показали: радиация на орбите Марса в 2,5 раза выше, чем на МКС, на поверхности — ниже, но всё ещё ощутимая. Полёт на Марс может увеличить риск рака у астронавтов на 5% против 3% на МКС, но это не критично. Даже лунные миссии не показали серьёзных последствий. NASA активно работает над защитой, включая экранирование водой и другие технологии. Полёт будет нагрузкой для организма, но ради науки и освоения новых миров риск считается оправданным.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="moon" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/26cc0b7878bb4d919b68e2be399db466/embed" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+              <div class="overlay"></div>
+            </div>
+            <div class="info_myths">
+              <div class="mmain_title"><p class="cosmo">Обратная сторона Луны — это вечная тьма</p></div>
+              <div class="mmain_txt"><p class="desc">Миф о «тёмной стороне Луны» давно укоренился в массовой культуре, но с научной точки зрения он неверен. На самом деле у Луны нет стороны, навсегда погружённой во тьму. Луна вращается вокруг своей оси примерно за то же время, что и обходит Землю по орбите — около 27,3 суток. Это называется синхронным вращением, из-за чего мы всегда видим только одну и ту же сторону Луны.
+
+              Обратная сторона — та, что не видна с Земли — тоже получает солнечный свет и переживает день и ночь так же, как видимая сторона. Каждая точка на Луне бывает освещена Солнцем примерно половину лунного месяца (около 14 земных дней).
+
+              Так что термин "тёмная сторона" — скорее поэтический или метафорический, а не астрономический. Более правильно говорить "обратная сторона Луны", которая впервые была сфотографирована советской станцией "Луна-3" в 1959 году.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Space Shuttle" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/05ae2cc887e04dd1a03fd4b3fd2ac1f5/embed" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+              <div class="overlay"></div>
+            </div>
+            <div class="info_myths">
+              <div class="mmain_title"><p class="cosmo">Шаттлы были вершиной космонавтики</p></div>
+              <div class="mmain_txt"><p class="desc">Многие считают, что шаттл взлетал как самолёт, но на самом деле он стартовал вертикально, как ракета. А садился как планер — без двигателей и права на ошибку: если промахнулся — второй попытки не будет. Полностью многоразовым он тоже не был. Возвращался только орбитальный корабль, топливный бак сгорал в атмосфере, а ускорители использовались повторно лишь частично. До Луны шаттл не долетал — он предназначался только для полётов на низкую орбиту.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2">
+        <div class="page_sun">
+          <div class="content">
+            <div class="jupiter">
+              <div class="sketchfab-embed-wrapper" style="width:100%;height:100%;"> <iframe title="Black Hole" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e410da98b1e5445eae2acafaaa53587d/embed?ui_infos=0" style="width: 100%; height:100%; border-radius: 20px;"> </iframe> </div>
+              <div class="overlay"></div>
+            </div>
+            <div class="info_myths">
+              <div class="mmain_title"><p class="cosmo">В чёрной дыре можно увидеть конец Вселенной</p></div>
+              <div class="mmain_txt"><p class="desc">Хотя чёрные дыры — это загадочные объекты, физики считают, что астронавт, пересекший горизонт событий, вряд ли увидит что-то в плане «путешествия в будущее» или «конца Вселенной». На самом деле, из-за экстремальных приливных сил или потоков высокоэнергетических частиц, любой объект, падающий в чёрную дыру, скорее всего, будет уничтожен. Даже если бы вы каким-то чудом пережили падение до сингулярности, путешествия во времени или в будущее не состоится.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <script src="script_planet3d.js"></script>
+    <script src="script_page2.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+      let scrolling = false;
+      function smoothScroll(deltaY) {
+          if (!scrolling) {
+              scrolling = true;
+              let sectionHeight = window.innerHeight; // Высота видимой части окна (высота одного блока)
+              let scrollDistance = deltaY > 0 ? sectionHeight : -sectionHeight; // Прокручиваем на высоту одного блока
+              let duration = 500; // Длительность анимации
+
+              // Функция для анимации прокрутки
+              function animateScroll() {
+                  let start = Date.now();
+                  let scrollStart = window.scrollY; // Текущая позиция прокрутки
+                  let end = scrollStart + scrollDistance; // Конечная позиция прокрутки
+
+                  function scroll() {
+                      let elapsed = Date.now() - start;
+                      let progress = elapsed / duration;
+
+                      if (progress < 1) {
+                          let currentScroll = scrollStart + (scrollDistance * progress);
+                          window.scrollTo(0, currentScroll); // Прокручиваем
+                          requestAnimationFrame(scroll); // Продолжаем анимацию
+                      } else {
+                          window.scrollTo(0, end); // Завершаем прокрутку
+                          scrolling = false;
+                      }
+                  }
+
+                  requestAnimationFrame(scroll); // Запуск анимации
+              }
+
+              requestAnimationFrame(animateScroll); // Запуск анимации
+          }
+      }
+
+      // Отслеживаем событие прокрутки мышью
+      window.addEventListener('wheel', function(event) {
+          event.preventDefault(); // Предотвращаем стандартную прокрутку
+          smoothScroll(event.deltaY); // Прокручиваем страницу
+      });
+    </script>
+    <script>
+      const screens = document.querySelectorAll('.box_status');
+      let currentIndex = 0;
+
+      function showScreen(index) {
+        screens.forEach((screen, i) => {
+          screen.classList.toggle('active', i === index);
+        });
+      }
+
+      // Назначаем обработчики всем стрелкам
+      document.querySelectorAll('.arrow_left').forEach(el => {
+        el.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+          showScreen(currentIndex);
+        });
+      });
+
+      document.querySelectorAll('.arrow_rigth').forEach(el => {
+        el.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % screens.length;
+          showScreen(currentIndex);
+        });
+      });
+
+      // Показываем первый экран
+      showScreen(currentIndex);
+    </script>
+    <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+  </body>
+</html> 
