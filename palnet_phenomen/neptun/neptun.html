@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="planet_syle.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+ </head>
+ <body>
+  <canvas id="starCanvas"></canvas>
+  <div class="parent">
+    <div class="page_sun">
+      <div class="title"><a href="../main_site/site.html"><p class="txt_title">НЕПТУН/ВЕРНУТЬСЯ</p></a></div>
+      <div class="content">
+        <div class="neptune" id="neptune"></div>
+        <div class="main_box">
+          <div class="arrow" id="triggerImage"><img src="../../image/arrow.png" style="width: 100%; height: 100%;"></div>
+          <div class="block_info" id="transform_platform">
+            <p class="txt_planet">Нептун — восьмая и самая удалённая от Солнца планета Солнечной системы. Его диаметр составляет около 49 250 километров, а расстояние от Солнца — примерно 4,5 миллиарда километров. Как и Уран, Нептун относится к ледяным гигантам, в его атмосфере преобладают водород, гелий и метан, последний придаёт планете насыщенный синий цвет. Нептун обладает мощными ветрами — самыми быстрыми в Солнечной системе, достигающими 2 100 км/ч. Сутки на Нептуне длятся около 16 часов, а полный оборот вокруг Солнца занимает 165 земных лет. На планете наблюдаются крупные штормовые образования, такие как тёмные пятна, напоминающие юпитерианское Большое красное пятно. У Нептуна есть тонкие кольца и 14 известных спутников, крупнейший из которых — Тритон. Тритон движется по ретроградной орбите и, вероятно, является захваченным объектом; он обладает геологической активностью и ледяными гейзерами.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script_planet3d.js"></script>
+  <script src="script_page2.js"></script>
+  <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+ </body>
+</html>
