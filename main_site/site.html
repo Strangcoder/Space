@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+ </head>
+ <body>
+  <canvas id="starCanvas"></canvas>
+  <div class="parent">
+    <div class="page1">
+      <div class="title">
+        <div class="profille">
+          <div class="emp_prof"></div>
+          <div class="photo" id="imageContainer"><p class="quest txt">?</p></div>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="loadImage(event)">
+          <div class="post"><p class="p_txt txt">
+            Имя <br/>
+            Пилот 
+          </p></div>
+        </div>
+        <div class="name"><p class="title_txt txt">Космос</p></div>
+        <div class="starship_box">
+          <div class="startshipB" id="triggerImage"></div></div>
+      </div>
+      <div class="paltform" id="transform_platform">
+        <div class="slider" id="slider">
+          <div class="box_status enb">
+            <div class="box_arrow"><p class="arrow_left txt" id="prev"><</p></div>
+            <p class="fuel txt">Топливо: 100%</p>
+            <p class="lvl_o2 txt">Уровень кислорода: 100%</p>
+            <p class="speed txt">Скорость: 750км/с</p>
+            <p class="coordinate txt">Координаты:</p>
+            <div class="box_arrow"><p class="arrow_rigth txt" id="next">></p></div>
+          </div>
+          <div class="box_status menu">
+            <div class="box_arrow"><p class="arrow_left txt" id="prev"><</p></div>
+            <a href="../phenomena/site.html"><p class="fuel txt">Интересные явления космоса</p></a>
+            <a href="../Myths/site.html"><p class="lvl_o2 txt">Мифы о космосе</p></a>
+            <a href="../News/site.html"><p class="speed txt">Новости</p></a>
+            <div class="box_arrow"><p class="arrow_rigth txt" id="next">></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="bodY">
+          <div class="content_page1">
+            <div class="empety"></div>
+            <div class="title_box"><p class="title_pahenom">Миссия - Вселенная</p></div>
+            <div class="empety"><div class="box_arrows"><a href="#start"><p class="chertova_arrow">START</p></a></div></div>
+          </div>
+      </div>
+      <div class="footer">
+      </div>
+    </div>
+        <div class="page2" id="start">
+        <div class="content_page2">
+            <div class="title_page2">
+                <p class="title_txt_page txt">Ты последняя надежда человечества</p>
+            </div>
+            <div class="solar_system-container">
+              <p class="txt_mission">Командир корабля "MH-1",
+
+у вас важная миссия — найти новый дом для нашей цивилизации. По текущим расчетам, ваш полёт займёт 10 лет по времени корабля, но для Земли пройдут тысячелетия.
+
+Ситуация на нашей планете стремительно ухудшается: Солнце становится всё более активным, климат нестабилен, здоровье людей под угрозой. Учёные прогнозируют, что у человечества осталось около 1500 лет — затем климат станет невыносимым. Единственная надежда на выживание — вы.
+
+Ваш корабль оснащён модернизированным ионно-ядерным двигателем, работающим на Тории-232. Это позволяет лететь долго и быстро. От радиации вас защитит многослойная броня с экранами, снижающими уровень излучения до безопасных значений.
+
+Ваша задача — покинуть пределы Млечного Пути, исследовать ближайшие галактики и их экзопланеты. Далее вы должны пересечь сверхскопление галактик Дева и достичь соседнего скопления. Все данные, которые вы будете передавать по радиосвязи, будут бесценны для будущего человечества. Мы проанализируем их и выберем новое пристанище.
+
+Это — полёт в один конец. Возвращаться на Землю мы не рекомендуем: к тому моменту она будет пуста. Но по завершении миссии мы отправим вам координаты нашего нового Дома.
+
+Удачи, командир. Человечество надеется на вас.</p>
+            </div>
+          </div>
+        </div>
+    <div class="page2">
+        <div class="content_page2">
+            <div class="title_page2">
+                <p class="title_txt_page txt">Солнечная система</p>
+            </div>
+            <div class="solar_system-container">
+              <div class="sun" id="sun"></div>
+              <div class="mercury" id="mercury"></div>
+              <div class="venus" id="venus"></div>
+              <div class="earth" id="earth"></div>
+              <div class="mars" id="mars"></div>
+              <div class="jupiter" id="jupiter"></div>
+              <div class="saturn" id="saturn"></div>
+              <div class="uran" id="uran"></div>
+              <div class="neptune" id="neptune"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page"> 
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Пояс астероидов</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/belt_kuiper.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box txt_box_main">
+                  <p class="txt_inblock txt">
+                    Главный пояс астероидов расположен между орбитами Марса и Юпитера. Он содержит миллионы каменных объектов, включая Цереру — крупнейший из астероидов, который также классифицируется как карликовая планета. Эти астероиды, вероятно, являются остатками материала, который не смог образовать планету из-за гравитационного воздействия Юпитера.
+
+                    Пояс Койпера находится за орбитой Нептуна и простирается от 30 до 50 астрономических единиц от Солнца. Это регион, населённый ледяными объектами, такими как Плутон, Эрида, Макемаке и Хаумеа. Пояс Койпера служит источником для комет с коротким периодом орбиты.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/belt_kuiper/belts.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Облако Оорта</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/oort_cloud.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Облако Оорта — это гипотетическая область, находящаяся на расстоянии 2000-100 000 астрономических единиц от Солнца. Оно состоит из миллиардов ледяных объектов и считается источником долгопериодических комет. Облако разделяется на внешнюю и внутреннюю части. Влияние Солнца сохраняет эти объекты на орбитах, несмотря на огромные расстояния, но облако также может испытывать воздействие других объектов из межзвездного пространтсва, что может нарушать орбиты объектов. Облако Оорта не наблюдается напрямую, но существование подтверждается движением комет.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/cloud_oort/oort.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Альфа Центавра</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/alhpa_centauri.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Альфа Центавра — это ближайшая к Солнцу звёздная система, находящаяся на расстоянии около 4,37 световых лет. Она состоит из трёх звёзд: Альфа Центавра A, Альфа Центавра B и Проксима Центавра — самая близкая из них. Проксима имеет экзопланету в обитаемой зоне, что делает её объектом особого интереса для учёных. Звёзды A и B формируют двойную систему, вращающуюся вокруг общего центра масс. Изучение Альфы Центавра важно для поиска жизни за пределами Солнечной системы. Система активно исследуется с помощью телескопов и миссий.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/alpha_centauri/alpha_centauri.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Сириус</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/sirius.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Сириус — самая яркая звезда ночного неба, находящаяся на расстоянии около 8,6 световых лет от Земли. Это двойная система, состоящая из белого гиганта Сириуса A и белого карлика Сириуса B. Сириус A примерно в два раза массивнее Солнца и светит в 25 раз ярче. Сириус B — это остаток звезды, завершившей свой жизненный цикл. Их орбита занимает около 50 лет. Сириус виден почти с любой точки Земли и с древности играл важную роль в культуре и астрономии. Система активно изучается благодаря своей близости и уникальным характеристикам.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/sirius/sirius.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Млечный путь</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/milky-way.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Млечный Путь — это наша галактика, содержащая около 100–400 миллиардов звёзд, включая Солнце. Она представляет собой спиральную галактику с перемычкой, диаметр которой достигает около 100 000 световых лет. В центре Млечного Пути находится сверхмассивная чёрная дыра — Стрелец A*. Солнечная система расположена примерно в 27 000 световых лет от центра галактики, в рукаве Ориона. Галактика окружена тёмной материей и сферическим гало из звёзд. Млечный Путь является частью Местной группы галактик и постоянно взаимодействует с соседними, включая Туманность Андромеды.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/milky_way/milkyway.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Андромеда</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/andromeda.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Галактика Андромеды — это спиральная галактика, ближайшая к Млечному Пути, находящаяся на расстоянии около 2,537 миллионов световых лет от Земли. Она содержит сотни миллиардов звёзд и является домом для множества звёздных систем, облаков газа и пыли. Андромеда активно поглощает соседние галактики, что свидетельствует о её эволюции через столкновения и слияния. В будущем, примерно через 4,5 миллиарда лет, Андромеда столкнётся с Млечным Пути, образуя гигантскую эллиптическую галактику. Изучение Андромеды помогает астрономам понять процессы слияния галактик и их влияние на развитие структуры Вселенной.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/andromeda/andromeda.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Местная группа галактик</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/universe-galaxy.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Местная группа галактик — это скопление более 80 галактик, включая Млечный Путь, Туманность Андромеды и галактику Треугольника. Её диаметр составляет около 10 миллионов световых лет. Центральными объектами являются две крупные спиральные галактики — Млечный Путь и Андромеда, каждая из которых окружена множеством карликовых спутников. Все члены группы связаны гравитационно и движутся внутри общего гравитационного поля. В будущем Млечный Путь и Андромеда могут столкнуться, образовав одну большую эллиптическую галактику. Местная группа входит в состав сверхскопления Девы.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/large_galactic/large.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Сверхскопление Дева</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/super_massive_galaxy.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Сверхскопление Девы — это гигантская структура Вселенной, объединяющая тысячи галактик, включая Местную группу, к которой принадлежит Млечный Путь. Его диаметр составляет около 110 миллионов световых лет. Центром сверхскопления считается Скопление Девы, содержащее свыше 1300 галактик и расположенное примерно в 65 миллионах световых лет от нас. Все галактики сверхскопления связаны гравитацией и постепенно движутся в сторону аномального гравитационного центра — Великого Аттрактора. Сверхскопление Девы является частью ещё более крупной структуры — Ланиакеи, в которую входит множество сверхскоплений.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/universe/universe.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_style_page">
+          <div class="main_content_page">
+            <div class="title_page3">
+              <p class="title_txt_page txt">Ланиакея</p>
+            </div>
+            <div class="info_belt_asteroides">
+              <div class="belt_asteroides">
+                <div class="block_img">
+                  <img src="../image/laniakea.gif" width="100%" height="100%" style="border-radius: 15px;">
+                </div>
+              </div>
+              <div class="txt_block">
+                <div class="txt_box1 txt_box_main">
+                  <p class="txt_inblock txt">
+                    Ланиакея — это гигантское сверхскопление галактик, в которое входит Сверхскопление Девы и, следовательно, наша Местная группа и Млечный Путь. Его диаметр составляет около 520 миллионов световых лет и включает примерно 100 000 галактик. Название «Ланиакея» означает «необъятное небо» на гавайском языке. Центр Ланиакеи расположен вблизи Великого Аттрактора — области с мощной гравитацией, притягивающей галактики. Это сверхскопление стало известно в 2014 году после анализа движения галактик. Ланиакея — одна из крупнейших известных структур во Вселенной, объединяющая множество сверхскоплений.
+                  </p>
+                  <div class="transition">
+                    <div class="planet" id="asteroid" data-link="../palnet_phenomen/laniakea/laniakea.html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="solar_system.js"></script>
+<!--     <script type="text/javascript">
+      let scrolling = false;
+      function smoothScroll(deltaY) {
+          if (!scrolling) {
+              scrolling = true;
+              let sectionHeight = window.innerHeight; // Высота видимой части окна (высота одного блока)
+              let scrollDistance = deltaY > 0 ? sectionHeight : -sectionHeight; // Прокручиваем на высоту одного блока
+              let duration = 500; // Длительность анимации
+
+              // Функция для анимации прокрутки
+              function animateScroll() {
+                  let start = Date.now();
+                  let scrollStart = window.scrollY; // Текущая позиция прокрутки
+                  let end = scrollStart + scrollDistance; // Конечная позиция прокрутки
+
+                  function scroll() {
+                      let elapsed = Date.now() - start;
+                      let progress = elapsed / duration;
+
+                      if (progress < 1) {
+                          let currentScroll = scrollStart + (scrollDistance * progress);
+                          window.scrollTo(0, currentScroll); // Прокручиваем
+                          requestAnimationFrame(scroll); // Продолжаем анимацию
+                      } else {
+                          window.scrollTo(0, end); // Завершаем прокрутку
+                          scrolling = false;
+                      }
+                  }
+
+                  requestAnimationFrame(scroll); // Запуск анимации
+              }
+
+              requestAnimationFrame(animateScroll); // Запуск анимации
+          }
+      }
+
+      // Отслеживаем событие прокрутки мышью
+      window.addEventListener('wheel', function(event) {
+          event.preventDefault(); // Предотвращаем стандартную прокрутку
+          smoothScroll(event.deltaY); // Прокручиваем страницу
+      });
+    </script> -->
+    <script type="text/javascript">
+      document.getElementById('imageContainer').onclick = function() {
+      document.getElementById('fileInput').click(); // Открывает диалог выбора файла
+    };
+
+    // Функция, которая вызывается при выборе файла
+    function loadImage(event) {
+      const file = event.target.files[0]; // Получаем выбранный файл
+
+      if (file) {
+        const reader = new FileReader();
+        
+        // Когда файл загружен, отображаем его
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result; // Присваиваем загруженный файл как изображение
+
+          const container = document.getElementById('imageContainer');
+          container.innerHTML = '';  // Очищаем контейнер
+          container.appendChild(img);  // Добавляем картинку
+        };
+        
+        reader.readAsDataURL(file); // Читаем файл как DataURL
+      }
+    }
+    </script>
+    <script>
+      const screens = document.querySelectorAll('.box_status');
+      let currentIndex = 0;
+
+      function showScreen(index) {
+        screens.forEach((screen, i) => {
+          screen.classList.toggle('active', i === index);
+        });
+      }
+
+      // Назначаем обработчики всем стрелкам
+      document.querySelectorAll('.arrow_left').forEach(el => {
+        el.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+          showScreen(currentIndex);
+        });
+      });
+
+      document.querySelectorAll('.arrow_rigth').forEach(el => {
+        el.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % screens.length;
+          showScreen(currentIndex);
+        });
+      });
+
+      // Показываем первый экран
+      showScreen(currentIndex);
+    </script>
+    <script type="text/javascript">
+      let scrolling = false;
+      function smoothScroll(deltaY) {
+          if (!scrolling) {
+              scrolling = true;
+              let sectionHeight = window.innerHeight; // Высота видимой части окна (высота одного блока)
+              let scrollDistance = deltaY > 0 ? sectionHeight : -sectionHeight; // Прокручиваем на высоту одного блока
+              let duration = 500; // Длительность анимации
+
+              // Функция для анимации прокрутки
+              function animateScroll() {
+                  let start = Date.now();
+                  let scrollStart = window.scrollY; // Текущая позиция прокрутки
+                  let end = scrollStart + scrollDistance; // Конечная позиция прокрутки
+
+                  function scroll() {
+                      let elapsed = Date.now() - start;
+                      let progress = elapsed / duration;
+
+                      if (progress < 1) {
+                          let currentScroll = scrollStart + (scrollDistance * progress);
+                          window.scrollTo(0, currentScroll); // Прокручиваем
+                          requestAnimationFrame(scroll); // Продолжаем анимацию
+                      } else {
+                          window.scrollTo(0, end); // Завершаем прокрутку
+                          scrolling = false;
+                      }
+                  }
+
+                  requestAnimationFrame(scroll); // Запуск анимации
+              }
+
+              requestAnimationFrame(animateScroll); // Запуск анимации
+          }
+      }
+
+      // Отслеживаем событие прокрутки мышью
+      window.addEventListener('wheel', function(event) {
+          event.preventDefault(); // Предотвращаем стандартную прокрутку
+          smoothScroll(event.deltaY); // Прокручиваем страницу
+      });
+    </script>
+    <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+ </body>
+</html>

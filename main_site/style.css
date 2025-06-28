@@ -1,0 +1,830 @@
+@font-face {
+    font-family: 'Jura'; /* Имя, которое вы будете использовать для шрифта */
+    src: url('../font/Jura.ttf') format('truetype'); /* Укажите путь к файлу шрифта */
+    font-weight: lighter; /* Установите вес для шрифта */
+    font-style: normal; /* Установите стиль для шрифта */
+}
+
+@keyframes trans_platfrom{
+	from{
+		top:-73px;
+	}
+	to{
+		top:-30px;
+	}
+}
+
+@keyframes trans_platfrom_back{
+	from{
+		top:-30px;
+	}
+	to{
+		top:-73px;
+	}
+}
+@keyframes opacity_sleep{
+	from{
+		opacity: 0;
+	}
+	50%{
+		opacity: 1;
+	}
+	to{
+		opacity: 0;
+	}
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/*body {
+	background:url("/image/space1.png");
+    background-size: cover;  
+    background-position: center center; 
+    background-attachment: fixed; 	
+}*/
+#starCanvas {
+  position: fixed;  /* фиксируем канвас на экране */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;  /* Канвас на заднем плане */
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+a:focus {
+  outline: none;
+}
+.txt{ 
+	font-family: 'Jura', serif;
+}
+.parent{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3px;
+}
+.page1{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+
+.paltform{
+	width: 100%;
+	height: 70px;
+	border: 0px solid;
+	border-radius: 20px;
+	position: relative;
+	z-index: 1;
+	top:-73px;
+	background-color: rgb(0, 0, 0, 0.50);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 24px;
+}
+
+.animate{
+	animation: trans_platfrom 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.animate_back{
+	animation: trans_platfrom_back 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.title{
+	width: 100%;
+	height: 100px;
+	border: 0px solid;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	border-radius: 20px;
+	position: relative;
+	z-index: 3;
+	background-color: #101733;
+}
+
+.profille{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;	
+}
+
+.name{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.starship_box{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: end;
+}
+
+.photo{
+	width: 60px;
+	height: 60px;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 10px;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post{
+	width: 60px;
+	height: 60px;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+}
+.quest{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.p_txt{
+	color: white;
+}
+.block_name_txt{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.block_pilot_txt{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.title_txt{
+	font-size: 30px;
+	color: white;
+}
+
+.startshipB{
+	width: 30px;
+	height: 30px;
+	border: 0px solid;
+	background: url(/image/starttrek.png);
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	background-position: center;
+	position: relative;
+	top: -3px;
+	right: 4px;
+}
+.box_status{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+  align-items: flex-end;
+}
+.fuel{
+	font-size: 13px;
+	color: #127628;
+}
+.enb{
+	display: none;
+}
+.menu{
+	display: none;
+}
+.box_status.active{
+	display: flex;
+}
+
+.box_arrow{
+	width: 20px;
+	height: auto;
+	border: 0px solid;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+}
+.arrow_left{
+	font-size: 26px;
+  color: #127628;
+  font-weight: bold;
+  margin-bottom: auto;
+}
+.arrow_rigth{
+	font-size: 26px;
+  color: #127628;
+  font-weight: bold;
+  margin-bottom: auto;
+}
+.lvl_o2{
+	font-size: 13px;
+	color: #127628;
+}
+
+.speed{
+	font-size: 13px;
+	color: #127628;
+}
+
+.coordinate{
+	font-size: 13px;
+	color: #127628;
+}
+.bodY{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+.content_page1{
+	width: 80%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	justify-items: center;
+	align-items: center;
+}
+.empety{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.title_box{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+.box_arrows{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.chertova_arrow{
+	font-family: 'Jura', serif;
+	font-size: 30px;
+	color: white;
+	animation: opacity_sleep 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+/*	animation-fill-mode: forwards;*/
+	animation-timing-function: ease-out;
+}
+.title_pahenom{
+	font-family: 'Jura', serif;
+	font-size: 50px;
+	color: white;
+	animation: opacity_sleep 10s;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+/*	animation-fill-mode: forwards;*/
+/*	animation-timing-function: ease-out;*/
+}
+
+.comandir{
+	width: 300px;
+	height: 380px;
+	border: 5px solid #127628;
+}
+.mission{
+	width: 360px;
+	height: 375px;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+}
+
+.mission_txt{
+	font-size: 13px;
+	color: #127628;
+	font-weight: bold;
+	text-align: left;
+
+}
+
+.mission_titile_txt{
+	font-size: 22px;
+	color: #127628;
+	font-weight: bold;
+}
+
+.page2{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+
+.content_page2{
+	width: 85%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 10% 90%;
+	justify-items: center;
+	align-items: center;
+}
+
+.title_txt_page{
+	font-size: 25px;
+	color: white;
+}
+
+.solar_system-container{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	gap: 5px;
+}
+
+.sun{
+	width: 200px;
+	height: 200px;
+	border: 0px solid;
+}
+
+.mercury{
+	width: 30px;
+	height: 50px;
+	border: 0px solid;
+}
+
+.venus{
+	width: 50px;
+	height: 50px;
+	border: 0px solid;
+}
+
+.earth{
+	width: 52px;
+	height: 52px;
+	border: 0px solid;
+}
+.mars{
+	width: 48px;
+	height: 48px;
+	border: 0px solid;
+}
+
+.jupiter{
+	width: 120px;
+	height: 120px;
+	border: 0px solid;
+}
+
+.saturn{
+	width: 120px;
+	height: 120px;
+	border: 0px solid;
+}
+
+.uran{
+	width: 120px;
+	height: 120px;
+	border: 0px solid;
+}
+
+.neptune{
+	width: 120px;
+	height: 120px;
+	border: 0px solid;
+}
+.main_style_page{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.page3{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.page4{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+.main_content_page{
+	width: 85%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-rows: 10% 90%;
+	justify-items: center;
+	align-items: center;
+}
+
+.info_belt_asteroides{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 5px;
+	justify-items: center;
+	align-items: center;
+}
+
+.belt_asteroides{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.block_img{
+	width: 100%;
+	height: 250px;
+	border: 0px solid;
+	background-color: black;
+	border-radius: 20px;
+}
+
+.txt_block{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.planet{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+}
+.txt_box_main{
+	width: 97%;
+	height: auto;
+	border: 0px solid;
+	border-radius: 20px;
+	background-color: rgb(13, 24, 66 , 0.96);
+}
+.txt_box{
+	padding-bottom: 5px;
+/*	align-self: flex-start;*/
+}
+.txt_box1{
+	padding-bottom: 7px;
+/*	align-self: flex-start;*/
+}
+.txt_inblock {
+	color: white;
+}
+.transition{
+	width: 40px;
+	height: 40px;
+	border: 0px solid;
+	margin-left: auto;
+}
+.page5{
+	width: 80%;
+	height: 100vh;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: rgb(15, 27, 74 , 0.96);
+}
+
+
+.emp_prof{
+	width: 60px;
+	height: 60px;
+	border: 0px solid;
+}
+
+
+.txt_mission{
+	font-family: 'Jura', serif;
+	font-size: 25px;
+	color: white;
+	text-align: center;
+}
+.slider{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+
+
+
+
+@media (max-width: 1920px){
+	.solar_system-container{
+		gap: 50px;
+	}
+		.block_img{
+		width: 472px;
+		height: 267px;
+	}
+}
+
+@media (max-width: 1870px){
+	.solar_system-container{
+		gap: 37px;
+	}
+}
+@media (max-width: 1750px){
+	.solar_system-container{
+		gap: 33px;
+	}
+}
+@media (max-width: 1700px){
+	.solar_system-container{
+		gap: 25px;
+	}
+}
+@media (max-width: 1600px){
+	.solar_system-container{
+		gap: 19px;
+	}
+}
+@media (max-width: 1500px){
+	.solar_system-container{
+		gap: 15px;
+	}
+}
+@media (max-width: 1440px){
+	.solar_system-container{
+		gap: 11px;
+	}
+}
+@media (max-width: 1400px){
+	.solar_system-container{
+		gap: 7px;
+	}
+}
+@media (max-width: 1360px){
+	.solar_system-container{
+		gap: 4px;
+	}
+}
+
+@media (max-width: 1280px){
+	.solar_system-container{
+		gap: 45px;
+	}
+	.sun{
+		width: 150px;
+		height: 150px;
+		border: 0px solid;
+	}
+
+	.mercury{
+		width: 15px;
+		height: 25px;
+		border: 0px solid;
+	}
+
+	.venus{
+		width: 25px;
+		height: 25px;
+		border: 0px solid;
+	}
+
+	.earth{
+		width: 26px;
+		height: 26px;
+		border: 0px solid;
+	}
+	.mars{
+		width: 24px;
+		height: 24px;
+		border: 0px solid;
+	}
+
+	.jupiter{
+		width: 60px;
+		height: 60px;
+		border: 0px solid;
+	}
+
+	.saturn{
+		width: 60px;
+		height: 60px;
+		border: 0px solid;
+	}
+
+	.uran{
+		width: 60px;
+		height: 60px;
+		border: 0px solid;
+	}
+
+	.neptune{
+		width: 60px;
+		height: 60px;
+		border: 0px solid;
+	}
+}
+
+@media (max-width: 1260px){
+	.solar_system-container{
+		gap: 37px;
+	}
+}
+
+@media (max-width: 1190px){
+	.solar_system-container{
+		gap: 28px;
+	}
+}
+
+@media (max-width: 1090px){
+	.solar_system-container{
+		gap: 20px;
+	}
+}
+
+@media (max-width: 1090px){
+	.solar_system-container{
+		gap: 20px;
+	}
+}
+@media (max-width: 900px){
+	.solar_system-container{
+		gap: 12px;
+	}
+}
+
+@media (max-width: 890px){
+	.solar_system-container{
+		gap: 6px;
+	}
+}
+
+@media (max-width: 1024px){
+	.emp_prof{
+		display: none;
+	}
+	.fuel{
+		font-size: 8px;
+	}
+		.lvl_o2{
+		font-size: 8px;
+	}
+		.speed{
+		font-size: 8px;
+	}
+		.coordinate{
+		font-size: 8px;
+	}
+	.box_arrow{
+		width: 10px;
+		height: auto;
+	}
+	.title_pahenom{
+		font-size: 27px;
+	}
+	.chertova_arrow{
+		font-size: 15px;
+	}
+	.title_txt_page{
+		font-size: 15px;
+	}
+	.txt_mission{
+		font-size: 14px;
+	}
+
+	.solar_system-container{
+	width: 100%;
+	height: 100%;
+	border: 0px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	gap: 35px;
+	}
+	.block_img{
+		width: 100%;
+		height: 50%;
+	}
+	.info_belt_asteroides{
+	grid-template-rows: repeat(2, 0.8fr);
+	grid-template-columns: 100%;
+	}
+	.belt_asteroides{
+		justify-content: start;
+	}
+	.txt_block {
+	  width: 100%;
+	  height: 100%;
+	  border:1px solid;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: start;
+	  align-items: center;
+	}
+}
