@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Space</title>
+   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="andromeda_style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+ </head>
+ <body>
+  <canvas id="starCanvas"></canvas>
+  <div class="parent">
+    <div class="page_sun">
+      <div class="title"><a href="../../main_site/site.html"><p class="txt_title">АНДРОМЕДА/ВЕРНУТЬСЯ</p></a></div>
+      <div class="content">
+        <div class="andromeda" id="andromeda"></div>
+        <div class="main_box">
+          <div class="arrow" id="triggerImage"><img src="../../image/arrow.png" style="width: 100%; height: 100%;"></div>
+          <div class="block_info" id="transform_platform">
+            <p class="txt_planet">Андромеда — ближайшая к Млечному Пути крупная галактика и самая большая в нашей Местной группе. Она расположена примерно в 2,5 миллиона световых лет от Земли в созвездии Андромеды. По своей структуре это спиральная галактика с перемычкой, подобная Млечному Пути, но крупнее — её диаметр составляет около 220 000 световых лет, а масса — в 1,5–2 раза больше. В Андромеде содержится около триллиона звёзд, а также множество шаровых скоплений, туманностей и спутниковых галактик. Галактика движется в сторону Млечного Пути со скоростью около 110 км/с, и, по прогнозам, через 4–5 миллиардов лет произойдёт их слияние, в результате чего образуется новая эллиптическая галактика. Андромеда — важный объект для изучения галактической эволюции, взаимодействия звёздных систем и тёмной материи. В ясную ночь при хороших условиях её можно увидеть невооружённым глазом как слабое светлое пятнышко на небе.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script_planet3d.js"></script>
+  <script src="script_page2.js"></script>
+  <script type="text/javascript">
+    let stars = [];
+    let speed = 25;
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight);
+      canvas.id('starCanvas');  // Присваиваем ID для стилизации через CSS
+      for (let i = 0; i < 800; i++) {
+        stars[i] = new Star();
+      }
+    }
+
+    function draw() {
+      background("black");
+      translate(width / 2, height / 2);
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+      }
+    }
+
+    function Star() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(width);
+    
+      this.update = function() {
+        this.z = this.z - speed;
+        if (this.z < 1) {
+          this.x = random(-width, width);
+          this.y = random(-height, height);
+          this.z = width;
+        }
+      };
+
+      this.show = function() {
+        fill("white");
+        var sx = map(this.x / this.z, 0, 1, 0, width);
+        var sy = map(this.y / this.z, 0, 1, 0, height);
+        var r = map(this.z, 0, width, 10, 0);
+        ellipse(sx, sy, r, r);
+      };
+    }
+    </script>
+ </body>
+</html>
